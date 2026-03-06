@@ -5,7 +5,7 @@ name = "rust"
 enabled = true
 
   [analyzers.meta]
-  runtime_version = "1.56.0"
+  msrv = "1.56.0"
 
 [[analyzers]]
 name = "secrets"
