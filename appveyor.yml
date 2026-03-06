@@ -7,10 +7,6 @@ environment:
       BITS: 32
     - TARGET: x86_64-pc-windows-msvc
       BITS: 64
-    - TARGET: i686-pc-windows-msvc
-      BITS: 32
-    - TARGET: x86_64-pc-windows-msvc
-      BITS: 64
 
 install:
   - curl -sSf -o rustup-init.exe https://win.rustup.rs/
@@ -25,11 +21,10 @@ test_script:
   - cargo build
 
 deploy:
-
-- provider: GitHub
-  on:
-   branch: main
-  tag: v$(appveyor_build_version)
-  description: Release v$(appveyor_build_version)
-  auth_token: $(GITHUB_TOKEN)
-  force_update: true
+  - provider: GitHub
+    on:
+      branch: main
+    tag: v$(appveyor_build_version)
+    description: Release v$(appveyor_build_version)
+    auth_token: $(GITHUB_TOKEN)
+    force_update: true
