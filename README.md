@@ -1,17 +1,15 @@
 # ViaCEP Rust client
 
-🇧🇷📍[ViaCEP](https://viacep.com.br) client wrapper for Rust projects.
+🇧🇷📍 [ViaCEP](https://viacep.com.br) client wrapper for Rust projects.
 
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/guibranco/viacep-rs/main)
 ![Crates.io](https://img.shields.io/crates/d/viacep-rs)
 [![wakatime](https://wakatime.com/badge/github/guibranco/viacep-rs.svg)](https://wakatime.com/badge/github/guibranco/viacep-rs)
 
-[![CodeFactor](https://www.codefactor.io/repository/github/guibranco/viacep-rs/badge)](https://www.codefactor.io/repository/github/guibranco/viacep-rs)
-
-| Service      | Status |
-| -------      | :----: |
-| AppVeyor CI  | [![Build status](https://ci.appveyor.com/api/projects/status/w1di231c9hr2tyhy/branch/main?svg=true)](https://ci.appveyor.com/project/guibranco/viacep-rs/branch/main) |
-| crates.io    | [![crates.io](https://img.shields.io/crates/v/viacep-rs.svg)](https://crates.io/crates/viacep-rs) |
+| Service     | Status |
+| -------     | :----: |
+| AppVeyor CI | [![Build status](https://ci.appveyor.com/api/projects/status/w1di231c9hr2tyhy/branch/main?svg=true)](https://ci.appveyor.com/project/guibranco/viacep-rs/branch/main) |
+| crates.io   | [![crates.io](https://img.shields.io/crates/v/viacep-rs.svg)](https://crates.io/crates/viacep-rs) |
 
 Pure Rust bindings to the [ViaCEP API](https://viacep.com.br).
 
@@ -19,48 +17,53 @@ Pure Rust bindings to the [ViaCEP API](https://viacep.com.br).
 
 `viacep-rs` is intended to work on all tier 1 supported Rust systems:
 
-- MacOSX
+- macOS
 - Linux
 - Windows
 
 ## Minimum Compiler Version
 
-Due to the use of certain features `viacep-rs` requires `rustc` version 1.18 or
-higher.
+`viacep-rs` requires `rustc` version **1.56 or higher** (Rust 2021 edition).
 
 ## Getting Started
 
-Add the following to your `Cargo.toml`
+Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
 viacep_rs = "0.2.0"
-serde_json = "1.0"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
 ```
 
-Then in your `lib.rs` or `main.rs` file add:
+Then in your `lib.rs` or `main.rs` file:
 
 ```rust
-extern crate viacep_rs;
+use viacep_rs::ViaCepClient;
 
 let client = ViaCepClient::new();
 
-// Single Zip Code data 
+// Single Zip Code lookup
 match client.get_zipcode("03177010") {
     Err(e) => eprintln!("{:?}", e),
     Ok(data) => {
         let cep = data.unwrap();
-        println!("IBGE: {} | Address: {} | Neighborhood: {} | City: {} | UF: {}", cep.ibge, cep.address, cep.neighborhood, cep.City, cep.state_initials);
+        println!(
+            "IBGE: {} | Address: {} | Neighborhood: {} | City: {} | UF: {}",
+            cep.ibge, cep.address, cep.neighborhood, cep.city, cep.state_initials
+        );
     }
 }
 
-//Find by address data
+// Search by address
 match client.search("SP", "São Paulo", "Paulista") {
     Err(e) => eprintln!("{:?}", e),
     Ok(data) => {
         let addresses = data.unwrap();
         for address in addresses {
-            println!("IBGE: {} | Address: {} | City: {} | Zip: {}", address.ibge, address.address, address.city, address.zip);
+            println!(
+                "IBGE: {} | Address: {} | City: {} | Zip: {}",
+                address.ibge, address.address, address.city, address.zip
+            );
         }
     }
 }
@@ -68,6 +71,4 @@ match client.search("SP", "São Paulo", "Paulista") {
 
 ## License
 
-Licensed under
-
-- MIT license ([LICENSE](https://github.com/guibranco/viacep-rs/blob/main/LICENSE) or [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT))
+Licensed under the MIT license ([LICENSE](https://github.com/guibranco/viacep-rs/blob/main/LICENSE) or [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT)).
