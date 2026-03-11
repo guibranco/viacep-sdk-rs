@@ -3,12 +3,15 @@
 🇧🇷📍 [ViaCEP](https://viacep.com.br) client wrapper for Rust projects.
 
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/guibranco/viacep-sdk-rs/main)
-![Crates.io](https://img.shields.io/crates/d/viacep-sdk-rs)
 [![wakatime](https://wakatime.com/badge/github/guibranco/viacep-sdk-rs.svg)](https://wakatime.com/badge/github/guibranco/viacep-sdk-rs)
 
-| Service     | Status |
-| -------     | :----: |
-| crates.io   | [![crates.io](https://img.shields.io/crates/v/viacep-sdk-rs.svg)](https://crates.io/crates/viacep-sdk-rs) |
+[![Maintainability](https://api.codeclimate.com/v1/badges/392b044637f43eb881ac/maintainability)](https://codeclimate.com/github/guibranco/viacep-sdk-rs/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/392b044637f43eb881ac/test_coverage)](https://codeclimate.com/github/guibranco/viacep-sdk-rs/test_coverage)
+[![CodeFactor](https://www.codefactor.io/repository/github/guibranco/viacep-sdk-rs/badge)](https://www.codefactor.io/repository/github/guibranco/viacep-sdk-rs)
+
+| Service   | Status |
+| --------- | :----: |
+| crates.io | [![Crates.io](https://img.shields.io/crates/v/viacep.svg)](https://crates.io/crates/viacep) |
 
 Pure Rust bindings to the [ViaCEP API](https://viacep.com.br).
 
