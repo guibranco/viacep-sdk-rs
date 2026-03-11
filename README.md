@@ -17,7 +17,7 @@ Pure Rust bindings to the [ViaCEP API](https://viacep.com.br).
 
 ## Dependencies and support
 
-`viacep-sdk-rs` is intended to work on all tier 1 supported Rust systems:
+`viacep` is intended to work on all tier 1 supported Rust systems:
 
 - macOS
 - Linux
