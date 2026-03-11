@@ -136,7 +136,7 @@ jobs:
 
             ```toml
             [dependencies]
-            viacep_rs = "${{ needs.version.outputs.semver }}"
+            viacep = "${{ needs.version.outputs.semver }}"
             ```
           draft: false
           prerelease: false
