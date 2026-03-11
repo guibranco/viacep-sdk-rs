@@ -1,18 +1,18 @@
 [package]
-name = "viacep_rs"
-version = "0.2.0"
+name = "viacep"
+version = "1.0.0"
 authors = ["Guilherme Branco Stracini <guilherme@guilhermebranco.com.br>"]
 edition = "2021"
 description = "The Via CEP client wrapper."
-repository = "https://github.com/guibranco/viacep-rs.git"
-homepage = "https://github.com/guibranco/viacep-rs"
+repository = "https://github.com/guibranco/viacep-sdk-rs.git"
+homepage = "https://github.com/guibranco/viacep-sdk-rs"
 keywords = ["rest", "client", "sdk", "cep", "viacep"]
 categories = ["network-programming", "web-programming::http-client"]
 readme = "README.md"
 license = "MIT"
 
 [badges]
-appveyor = { repository = "guibranco/viacep-rs", branch = "main", service = "github" }
+appveyor = { repository = "guibranco/viacep-sdk-rs", branch = "main", service = "github" }
 
 [dependencies]
 dotenv = "0.15"

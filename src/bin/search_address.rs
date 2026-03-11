@@ -1,6 +1,6 @@
 use dotenv::dotenv;
 use prettytable::{format, row, Table};
-use viacep_rs::ViaCepClient;
+use viacep::ViaCepClient;
 
 fn main() {
     dotenv().ok();
