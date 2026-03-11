@@ -30,14 +30,14 @@ Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-viacep_rs = "1.0.0"
+viacep = "1.0.0"
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
 ```
 
 Then in your `lib.rs` or `main.rs` file:
 
 ```rust
-use viacep_rs::ViaCepClient;
+use viacep::ViaCepClient;
 
 let client = ViaCepClient::new();
 
