@@ -1,5 +1,5 @@
 [package]
-name = "viacep_sdk_rs"
+name = "viacep"
 version = "1.0.0"
 authors = ["Guilherme Branco Stracini <guilherme@guilhermebranco.com.br>"]
 edition = "2021"
