@@ -2,20 +2,19 @@
 
 🇧🇷📍 [ViaCEP](https://viacep.com.br) client wrapper for Rust projects.
 
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/guibranco/viacep-rs/main)
-![Crates.io](https://img.shields.io/crates/d/viacep-rs)
-[![wakatime](https://wakatime.com/badge/github/guibranco/viacep-rs.svg)](https://wakatime.com/badge/github/guibranco/viacep-rs)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/guibranco/viacep-sdk-rs/main)
+![Crates.io](https://img.shields.io/crates/d/viacep-sdk-rs)
+[![wakatime](https://wakatime.com/badge/github/guibranco/viacep-sdk-rs.svg)](https://wakatime.com/badge/github/guibranco/viacep-sdk-rs)
 
 | Service     | Status |
 | -------     | :----: |
-| AppVeyor CI | [![Build status](https://ci.appveyor.com/api/projects/status/w1di231c9hr2tyhy/branch/main?svg=true)](https://ci.appveyor.com/project/guibranco/viacep-rs/branch/main) |
-| crates.io   | [![crates.io](https://img.shields.io/crates/v/viacep-rs.svg)](https://crates.io/crates/viacep-rs) |
+| crates.io   | [![crates.io](https://img.shields.io/crates/v/viacep-sdk-rs.svg)](https://crates.io/crates/viacep-sdk-rs) |
 
 Pure Rust bindings to the [ViaCEP API](https://viacep.com.br).
 
 ## Dependencies and support
 
-`viacep-rs` is intended to work on all tier 1 supported Rust systems:
+`viacep-sdk-rs` is intended to work on all tier 1 supported Rust systems:
 
 - macOS
 - Linux
@@ -23,7 +22,7 @@ Pure Rust bindings to the [ViaCEP API](https://viacep.com.br).
 
 ## Minimum Compiler Version
 
-`viacep-rs` requires `rustc` version **1.56 or higher** (Rust 2021 edition).
+`viacep-sdk-rs` requires `rustc` version **1.56 or higher** (Rust 2021 edition).
 
 ## Getting Started
 
@@ -71,4 +70,4 @@ match client.search("SP", "São Paulo", "Paulista") {
 
 ## License
 
-Licensed under the MIT license ([LICENSE](https://github.com/guibranco/viacep-rs/blob/main/LICENSE) or [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT)).
+Licensed under the MIT license ([LICENSE](https://github.com/guibranco/viacep-sdk-rs/blob/main/LICENSE) or [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT)).
