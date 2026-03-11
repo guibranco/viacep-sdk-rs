@@ -30,7 +30,7 @@ Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-viacep_rs = "0.2.0"
+viacep_rs = "1.0.0"
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
 ```
 
