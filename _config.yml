@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
 title: ViaCEP Rust client
 description: The ViaCEP client for Rust projects.
-logo: https://raw.githubusercontent.com/guibranco/viacep-rs/main/logo.png
+logo: https://raw.githubusercontent.com/guibranco/viacep-sdk-rs/main/logo.png
 show_downloads: true
