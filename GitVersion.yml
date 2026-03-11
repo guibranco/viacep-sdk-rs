@@ -5,7 +5,6 @@ tag-prefix: "v"
 major-version-bump-message: "(breaking|major):"
 minor-version-bump-message: "(feat|feature|minor):"
 patch-version-bump-message: "(fix|patch|chore|refactor|perf|docs|style|test|ci):"
-no-bump-message: "(skip-release|no-release)"
 commit-message-incrementing: Enabled
 
 branches:
@@ -15,11 +14,8 @@ branches:
     tag: ""
     increment: Patch
     prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    tracks-release-branch: false
     is-release-branch: true
     is-mainline: true
-    pre-release-weight: 55000
 
   pull-request:
     regex: ^(pull|pull\-requests|pr)[/-]
@@ -27,14 +23,12 @@ branches:
     tag: PullRequest
     increment: Inherit
     tag-number-pattern: '[/-](?<number>\d+)'
-    pre-release-weight: 30000
 
   feature:
     regex: ^features?[/-]
     mode: ContinuousDeployment
     tag: alpha
     increment: Minor
-    pre-release-weight: 30000
 
 ignore:
   sha: []
