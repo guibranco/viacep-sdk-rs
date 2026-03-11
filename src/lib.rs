@@ -27,7 +27,7 @@ fn to_io_error<E>(err: E) -> io::Error
 where
     E: Into<Box<dyn std::error::Error + Send + Sync>>,
 {
-    io::Error::new(io::ErrorKind::Other, err)
+    io::Error::other(err)
 }
 
 struct UriMaker {
