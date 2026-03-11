@@ -6,9 +6,37 @@ on:
       - main
 
 jobs:
+  version:
+    name: Calculate version
+    runs-on: ubuntu-latest
+    outputs:
+      semver: ${{ steps.gitversion.outputs.semVer }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v1
+        with:
+          versionSpec: "5.x"
+
+      - name: Determine version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v1
+        with:
+          useConfigFile: true
+          configFilePath: GitVersion.yml
+
+      - name: Display version
+        run: echo "Version is ${{ steps.gitversion.outputs.semVer }}"
+
   build-and-test:
     name: Build & Test (${{ matrix.target }})
     runs-on: ${{ matrix.os }}
+    needs: version
     strategy:
       fail-fast: true
       matrix:
@@ -25,6 +53,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -49,13 +79,15 @@ jobs:
         run: cargo test --target ${{ matrix.target }}
 
   publish:
-    name: Publish to crates.io
+    name: Publish to crates.io & GitHub
     runs-on: ubuntu-latest
-    needs: build-and-test
+    needs: [version, build-and-test]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -71,7 +103,42 @@ jobs:
           restore-keys: |
             ubuntu-latest-publish-cargo-
 
+      - name: Patch version in Cargo.toml
+        run: |
+          VERSION="${{ needs.version.outputs.semver }}"
+          sed -i "s/^version = \".*\"/version = \"$VERSION\"/" Cargo.toml
+          echo "Cargo.toml patched to version $VERSION (workspace only, not committed)"
+
+      - name: Tag release
+        run: |
+          VERSION="${{ needs.version.outputs.semver }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
+
       - name: Publish to crates.io
         run: cargo publish --no-verify
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.version.outputs.semver }}
+          name: v${{ needs.version.outputs.semver }}
+          body: |
+            ## What's Changed
+
+            See the [commit history](https://github.com/${{ github.repository }}/commits/v${{ needs.version.outputs.semver }}) for a full list of changes.
+
+            ### Install
+
+            ```toml
+            [dependencies]
+            viacep_rs = "${{ needs.version.outputs.semver }}"
+            ```
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
