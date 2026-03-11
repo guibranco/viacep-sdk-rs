@@ -11,9 +11,6 @@ categories = ["network-programming", "web-programming::http-client"]
 readme = "README.md"
 license = "MIT"
 
-[badges]
-appveyor = { repository = "guibranco/viacep-sdk-rs", branch = "main", service = "github" }
-
 [dependencies]
 dotenv = "0.15"
 env_logger = "0.11"
