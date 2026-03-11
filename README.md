@@ -25,7 +25,7 @@ Pure Rust bindings to the [ViaCEP API](https://viacep.com.br).
 
 ## Minimum Compiler Version
 
-`viacep-sdk-rs` requires `rustc` version **1.56 or higher** (Rust 2021 edition).
+`viacep` requires `rustc` **1.56** or higher (edition 2021).
 
 ## Getting Started
 
